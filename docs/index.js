@@ -57,6 +57,7 @@
         // Sound FX.
         this.audioBuffer = null;
         this.soundFx = {};
+        this.avaSong = document.getElementById('ava_song');
 
         // Global web audio context for playing sounds.
         this.audioContext = null;
@@ -518,6 +519,9 @@
 
             window.addEventListener(Runner.events.FOCUS,
                 this.onVisibilityChange.bind(this));
+
+            // play ava song
+            this.avaSong.play();
         },
 
         clearCanvas: function () {
@@ -804,6 +808,10 @@
 
             // Reset the time clock.
             this.time = getTimeStamp();
+
+            // stop ava song
+            this.avaSong.pause();
+            this.avaSong.currentTime = 0;
         },
 
         stop: function () {
@@ -840,6 +848,9 @@
                 this.playSound(this.soundFx.BUTTON_PRESS);
                 this.invert(true);
                 this.update();
+
+                // play ava song
+                this.avaSong.play();
             }
         },
         
