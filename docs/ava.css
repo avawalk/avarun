@@ -1,0 +1,8 @@
+body {
+  margin: 0; /* Remove default margins */
+  height: 100vh; /* Ensure the body takes up full viewport height */
+  background-image: url('./assets/AVA RUN BG.png'); /* Replace with your image URL */
+  background-size: cover; /* Ensures the image covers the entire background */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling of the image */
+}
