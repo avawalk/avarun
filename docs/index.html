@@ -40,6 +40,11 @@
         var box = document.getElementById("messageBox");
         box.style.visibility="hidden";
     }
+    else if (evt.keyCode == 80) { // P
+        let audio = document.getElementById('ava_song');
+        audio.muted = !audio.muted;
+        console.log('BG sound:', !audio.muted);
+    }
 };
 </script>
     
