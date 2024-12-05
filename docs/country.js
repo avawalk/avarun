@@ -1,4 +1,6 @@
 const COUNTRIES = [
+    ["AVA", "AVA", "🐯"],
+    //
     ["Afghanistan", "AF", "🇦🇫"],
     ["Albania", "AL", "🇦🇱"],
     ["Algeria", "DZ", "🇩🇿"],

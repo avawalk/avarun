@@ -6,3 +6,8 @@ body {
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents tiling of the image */
 }
+#country {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

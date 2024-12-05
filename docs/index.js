@@ -812,6 +812,13 @@
             // stop ava song
             this.avaSong.pause();
             this.avaSong.currentTime = 0;
+
+            // upload scoreboard
+            let code = document.getElementById('country').value;
+            let score = this.distanceMeter.getActualDistance(Math.ceil(this.distanceRan));
+            let secret = 'DONTHACKMEBRO';
+            console.log(`add ${score} scores for ${code}`);
+            $.post('./apis/?', { code: code, score: score, secret: secret }, resp => console.log(resp))
         },
 
         stop: function () {

@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="ava.css?t=241205">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
-    <script src="index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="index.js?t=241205"></script>
 </head>
 
 <body id="t" class="offline">
+    <select id='country'></select>
     <div id="messageBox" class="sendmessage">
          <!--h1 style="text-align: center;font-family: 'Open Sans', sans-serif;">Press Space to start</h1-->
          <div class="niokbutton" onclick="okbuttonsend()"></div>
@@ -33,19 +35,32 @@
     <audio id="ava_song" src="./assets/AVA_Song.mp3" loop></audio>
 </body>
 
+<script src='./country.js'></script>
 <script>
-    document.onkeydown = function(evt) {
+  // keyboard events
+  document.onkeydown = function(evt) {
     evt = evt || window.event;
     if (evt.keyCode == 32) {
-        var box = document.getElementById("messageBox");
-        box.style.visibility="hidden";
+      var box = document.getElementById("messageBox");
+      box.style.visibility="hidden";
     }
     else if (evt.keyCode == 80) { // P
-        let audio = document.getElementById('ava_song');
-        audio.muted = !audio.muted;
-        console.log('BG sound:', !audio.muted);
+      let audio = document.getElementById('ava_song');
+      audio.muted = !audio.muted;
+      console.log('BG sound:', !audio.muted);
     }
-};
+  };
+
+  // country combobox
+  COUNTRIES.forEach(r => {
+    let [ title, code, flag ] = r;
+    $('#country').append(`
+      <option value='${code}'>${title} ${flag}</option>
+    `);
+  });
+  $('#country').change(evt => localStorage.setItem('AVA_FLAG', evt.target.value));
+  let save_flag = localStorage.getItem('AVA_FLAG');
+  if (save_flag) $('#country').val(save_flag);
 </script>
     
 </html>

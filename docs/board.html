@@ -21,69 +21,28 @@
           </tr>
         </thead>
         <tbody>
-          <tr class='rank-1'>
-            <td>1 🇹🇭</td>
-            <td>Thailand</td>
-            <td>999</td>
-            <td>999,999</td>
-          </tr>
-          <tr class='rank-2'>
-            <td>2 🇹🇭</td>
-            <td>Thailand</td>
-            <td>999</td>
-            <td>999,999</td>
-          </tr>
-          <tr class='rank-3'>
-            <td>3 🇹🇭</td>
-            <td>Thailand</td>
-            <td>999</td>
-            <td>999,999</td>
-          </tr>
-
-          <tr>
-            <td>4 🇹🇭</td>
-            <td>Thailand</td>
-            <td>999</td>
-            <td>999,999</td>
-          </tr>
-          <tr>
-            <td>5 🇹🇭</td>
-            <td>Thailand</td>
-            <td>999</td>
-            <td>999,999</td>
-          </tr>
-          <tr>
-            <td>6 🇹🇭</td>
-            <td>Thailand</td>
-            <td>999</td>
-            <td>999,999</td>
-          </tr>
-          <tr>
-            <td>7 🇹🇭</td>
-            <td>Thailand</td>
-            <td>999</td>
-            <td>999,999</td>
-          </tr>
-          <tr>
-            <td>8 🇹🇭</td>
-            <td>Thailand</td>
-            <td>999</td>
-            <td>999,999</td>
-          </tr>
-          <tr>
-            <td>9 🇹🇭</td>
-            <td>Thailand</td>
-            <td>999</td>
-            <td>999,999</td>
-          </tr>
-          <tr>
-            <td>10 🇹🇭</td>
-            <td>Thailand</td>
-            <td>999</td>
-            <td>999,999</td>
-          </tr>
         </tbody>
       </table>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src='./country.js'></script>
+    <script>
+      $.getJSON('./apis/?', resp => {
+        let rows = resp.data || [];
+        if (rows.length == 0) return;
+        rows.forEach((r, idx) => {
+          let no = idx + 1;
+          let [ title, _, flag ] = COUNTRIES.find(c => c[1] == r.code);
+          $('tbody').append(`
+          <tr class='rank-${no}'>
+            <td>${no} ${flag}</td>
+            <td>${title}</td>
+            <td>${r.plays}</td>
+            <td>${r.score}</td>
+          </tr>
+          `);
+        });
+      });
+    </script>
   </body>
 </html>
