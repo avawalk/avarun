@@ -10,3 +10,12 @@ h1 {
 .nes-table-responsive table {
   margin: 4px auto !important;
 }
+.rank-1 {
+  background-color: gold;
+}
+.rank-2 {
+  background-color: silver;
+}
+.rank-3 {
+  background-color: #cd7f32;
+}
