@@ -814,7 +814,7 @@
             this.avaSong.currentTime = 0;
 
             // upload scoreboard
-            let code = document.getElementById('country').value;
+            let code = localStorage.getItem('AVA_FLAG') || 'AVA';
             let score = this.distanceMeter.getActualDistance(Math.ceil(this.distanceRan));
             let secret = 'DONTHACKMEBRO';
             console.log(`add ${score} scores for ${code}`);

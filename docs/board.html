@@ -6,9 +6,16 @@
     <title>AVARUN Leaderboard</title>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="board.css?t=241205">
+    <link rel="stylesheet" href="board.css?t=241206">
   </head>
   <body>
+    <div class='topnav'>
+      <a class="nes-btn is-primary" href='https://www.tiktok.com/@apecoftonderock/video/7443354895115226375' target='_blank'>Music</a>
+      <a class="nes-btn is-warning" href='./index.html'>Play</a>
+    </div>
+    <br>
+    <br>
+    <br>
     <h1>Leaderboard</h1>
     <div class="nes-table-responsive">
       <table class="nes-table is-bordered">
@@ -16,17 +23,34 @@
           <tr>
             <th>Rank</th>
             <th>Country</th>
-            <th>Plays</th>
             <th>Score</th>
+            <th>Plays</th>
           </tr>
         </thead>
         <tbody>
         </tbody>
       </table>
+      <br>
+      <div class='my'>
+        <h2>My Country</h2>
+        <select id='country'></select>
+      </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src='./country.js'></script>
     <script>
+      // country combobox
+      COUNTRIES.forEach(r => {
+        let [ title, code, flag ] = r;
+        $('#country').append(`
+          <option value='${code}'>${title} ${flag}</option>
+        `);
+      });
+      $('#country').change(evt => localStorage.setItem('AVA_FLAG', evt.target.value));
+      let save_flag = localStorage.getItem('AVA_FLAG');
+      if (save_flag) $('#country').val(save_flag);
+
+      // render leaderboard
       $.getJSON('./apis/?', resp => {
         let rows = resp.data || [];
         if (rows.length == 0) return;
@@ -37,8 +61,8 @@
           <tr class='rank-${no}'>
             <td>${no} ${flag}</td>
             <td>${title}</td>
-            <td>${r.plays}</td>
             <td>${r.score}</td>
+            <td>${r.plays}</td>
           </tr>
           `);
         });

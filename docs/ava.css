@@ -6,8 +6,14 @@ body {
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents tiling of the image */
 }
-#country {
+.topnav {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 10px;
+  text-align: right;
+}
+.offline .controller { /* fix change id in mobile */
+  top: 75px;
 }
