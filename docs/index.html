@@ -37,7 +37,7 @@
             </template>
         </div>
     </div>
-    <audio id="ava_song" src="./assets/AVA_Song.mp3" loop></audio>
+    <audio id="ava_song" src="https://avawalk.github.io/avarun/assets/AVA_Song.mp3" loop></audio>
 </body>
 
 <script>
@@ -54,6 +54,10 @@
       console.log('BG sound:', !audio.muted);
     }
   };
+
+  // prevent mp3 cache
+  let ts = +(new Date());
+  document.getElementById('ava_song').src += ('?t=' + ts);
 </script>
     
 </html>
