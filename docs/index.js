@@ -58,6 +58,7 @@
         this.audioBuffer = null;
         this.soundFx = {};
         this.avaSong = document.getElementById('ava_song');
+        this.yadome = document.getElementById('yadome');
 
         // Global web audio context for playing sounds.
         this.audioContext = null;
@@ -782,7 +783,7 @@
          * Game over state.
          */
         gameOver: function () {
-            this.playSound(this.soundFx.HIT);
+            this.yadome.play(); //this.playSound(this.soundFx.HIT);
             vibrate(200);
 
             this.stop();
