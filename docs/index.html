@@ -56,6 +56,12 @@
     }
   };
 
+  // kub track
+  let flag = localStorage.getItem('AVA_FLAG');
+  if (flag === 'KUB') {
+    document.getElementById('ava_song').src = "https://avawalk.github.io/avarun/assets/AVA_KUB.mp3";
+  }
+
   // prevent mp3 cache
   let ts = +(new Date());
   document.getElementById('ava_song').src += ('?t=' + ts);
