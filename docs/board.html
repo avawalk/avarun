@@ -6,7 +6,7 @@
     <title>AVARUN Leaderboard</title>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="board.css?t=241206">
+    <link rel="stylesheet" href="board.css?t=250404">
   </head>
   <body>
     <div class='topnav'>
@@ -58,7 +58,7 @@
           let no = idx + 1;
           let [ title, _, flag ] = COUNTRIES.find(c => c[1] == r.code);
           $('tbody').append(`
-          <tr class='rank-${no}'>
+          <tr class='rank-${no} row-${r.code}'>
             <td>${no} ${flag}</td>
             <td>${title}</td>
             <td>${r.score}</td>
